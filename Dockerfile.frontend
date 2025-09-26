@@ -1,0 +1,23 @@
+# ---------- build stage (use old Node) ----------
+FROM node:12.22-alpine AS build
+WORKDIR /app
+
+# install deps with npm 6 (lockfile v1)
+COPY frontend/package*.json ./
+# legacy peer deps avoids strict peer checks on older trees
+RUN npm ci --no-audit --no-fund || npm install --no-audit --no-fund --legacy-peer-deps
+
+# copy source and build
+COPY frontend/ ./
+
+# for old Angular CLI the prod flag lives on the script; keep both variants
+# (the second runs only if the first is not defined)
+RUN npm run build -- --prod || npm run build --prod
+
+# ---------- runtime stage ----------
+FROM nginx:1.25-alpine
+# if you know the exact dist directory, replace the ** below with it
+# e.g. /app/dist/FrontEnd or /app/dist/angular-hospital, etc.
+COPY --from=build /app/dist/** /usr/share/nginx/html
+# optional: custom nginx config
+# COPY frontend.nginx.conf /etc/nginx/conf.d/default.conf
