@@ -26,6 +26,8 @@ public class DataSeeder implements CommandLineRunner {
         try {
             jdbc.update("INSERT IGNORE INTO `user` (username, password) VALUES (?, ?)",
                     "username", "password");
+            jdbc.update("INSERT IGNORE INTO `user` (username, password) VALUES (?, ?)",
+                    "admin", "admin123");
         } catch (Exception e) {
             log.warn("Insert into `user` failed. Check table & columns.", e);
         }
