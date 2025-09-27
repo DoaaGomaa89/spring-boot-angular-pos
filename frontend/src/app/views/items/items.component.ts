@@ -10,7 +10,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-
+ p: number = 1;  
   items: Array<Items> = [];
   selectedItems: Items = new Items;
   tempItems: Items = null;

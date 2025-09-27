@@ -8,7 +8,7 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+ p: number = 1;
   user: User = new User();
   failed: boolean;
 

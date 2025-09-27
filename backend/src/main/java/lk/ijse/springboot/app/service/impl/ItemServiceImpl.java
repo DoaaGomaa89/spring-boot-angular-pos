@@ -29,7 +29,7 @@ public class ItemServiceImpl implements ItemService {
         ArrayList<ItemsDTO> allItems = new ArrayList<>();
 
         for (Items items : itemsList){
-            ItemsDTO itemsDTO=new ItemsDTO(items.getCode(),items.getDiscription(),items.getUnicPrice(),items.getQtyOnHand());
+            ItemsDTO itemsDTO=new ItemsDTO(items.getCode(),items.getDescription(),items.getUnicPrice(),items.getQtyOnHand());
 
             allItems.add(itemsDTO);
         }
@@ -53,7 +53,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean saveItems(ItemsDTO itemsDTO) {
-        Items items=new Items(itemsDTO.getCode(),itemsDTO.getDiscription(),itemsDTO.getUnicPrice(),itemsDTO.getQtyOnHand());
+        Items items=new Items(itemsDTO.getCode(),itemsDTO.getDescription(),itemsDTO.getUnicPrice(),itemsDTO.getQtyOnHand());
         itemRepositry.save(items);
         return true;
             }
@@ -72,7 +72,7 @@ public class ItemServiceImpl implements ItemService {
 
         ItemsDTO itemsDTO=new ItemsDTO(
                  item.getCode(),
-                 item.getDiscription(),
+                 item.getDescription(),
                  item.getUnicPrice(),
                  item.getQtyOnHand()
          );

@@ -3,16 +3,16 @@ package lk.ijse.springboot.app.dto;
 public class ItemsDTO {
 
     private String code;
-    private String discription;
+    private String description;
     private Double unicPrice;
     private int QtyOnHand;
 
     public ItemsDTO() {
     }
 
-    public ItemsDTO(String code, String discription, Double unicPrice, int qtyOnHand) {
+    public ItemsDTO(String code, String description, Double unicPrice, int qtyOnHand) {
         this.setCode(code);
-        this.setDiscription(discription);
+        this.setDescription(description);
         this.setUnicPrice(unicPrice);
         setQtyOnHand(qtyOnHand);
     }
@@ -26,12 +26,12 @@ public class ItemsDTO {
         this.code = code;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getUnicPrice() {
@@ -54,7 +54,7 @@ public class ItemsDTO {
     public String toString() {
         return "ItemsDTO{" +
                 "code='" + code + '\'' +
-                ", discription='" + discription + '\'' +
+                ", description='" + description + '\'' +
                 ", unicPrice=" + unicPrice +
                 ", QtyOnHand=" + QtyOnHand +
                 '}';

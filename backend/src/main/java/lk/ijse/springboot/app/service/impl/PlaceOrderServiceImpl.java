@@ -64,7 +64,7 @@ public class PlaceOrderServiceImpl implements PlaceOrderService {
 
             Items items=new Items();
             items.setCode(itemsDTO.getCode());
-            items.setDiscription(itemsDTO.getDiscription());
+            items.setDescription(itemsDTO.getDescription());
             items.setUnicPrice(itemsDTO.getUnicPrice());
             items.setQtyOnHand(itemsDTO.getQtyOnHand());
 

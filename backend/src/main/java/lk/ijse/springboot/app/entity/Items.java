@@ -8,21 +8,30 @@ public class Items {
 
     @Id
     private String code;
-    private String discription;
+    private String description;
+
+
     private Double unicPrice;
     private int QtyOnHand;
 
     public Items() {
     }
 
-    public Items(String code, String discription, Double unicPrice, int qtyOnHand) {
+    public Items(String code, String description, Double unicPrice, int qtyOnHand) {
         this.setCode(code);
-        this.setDiscription(discription);
+        this.setDescription(description);
         this.setUnicPrice(unicPrice);
         setQtyOnHand(qtyOnHand);
     }
 
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public String getCode() {
         return code;
     }
@@ -31,13 +40,6 @@ public class Items {
         this.code = code;
     }
 
-    public String getDiscription() {
-        return discription;
-    }
-
-    public void setDiscription(String discription) {
-        this.discription = discription;
-    }
 
     public Double getUnicPrice() {
         return unicPrice;
@@ -59,7 +61,7 @@ public class Items {
     public String toString() {
         return "Items{" +
                 "code='" + code + '\'' +
-                ", discription='" + discription + '\'' +
+                ", description='" + description + '\'' +
                 ", unicPrice=" + unicPrice +
                 ", QtyOnHand=" + QtyOnHand +
                 '}';

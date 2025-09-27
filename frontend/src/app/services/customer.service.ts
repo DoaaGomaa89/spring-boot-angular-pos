@@ -4,7 +4,7 @@ import {Customer} from '../dtos/customer';
 import {HttpClient} from '@angular/common/http';
 import {Items} from '../dtos/items';
 
-export const MAIN_URL = 'http://localhost:8080';
+export const MAIN_URL = 'http://localhost:8081';
 const URL = '/api/v1/customers';
 
 @Injectable()

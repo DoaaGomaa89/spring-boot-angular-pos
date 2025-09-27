@@ -9,7 +9,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./manage-customers.component.css']
 })
 export class ManageCustomersComponent implements OnInit {
-
+ p: number = 1;
   customers: Array<Customer> = [];
   selectedCustomer: Customer = new Customer();
   tempCustomer: Customer = null;

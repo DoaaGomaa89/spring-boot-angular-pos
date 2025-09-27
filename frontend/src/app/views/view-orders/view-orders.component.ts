@@ -8,6 +8,7 @@ import {Orders} from '../../dtos/orders';
   styleUrls: ['./view-orders.component.css']
 })
 export class ViewOrdersComponent implements OnInit {
+ p: number = 1;
 orders: Array<Orders> = [];
 
   constructor(private placeOrderService: PlaceOrderServiceService) { }

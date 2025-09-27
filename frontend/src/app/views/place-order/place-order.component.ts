@@ -16,7 +16,7 @@ import {PlaceOrderServiceService} from '../../services/place-order-service.servi
   styleUrls: ['./place-order.component.css']
 })
 export class PlaceOrderComponent implements OnInit {
-
+ p: number = 1;
   customers: Array<Customer> = [];
   selectedItems: Array<OrdersDetail> = [];
   FullTotal = 0;

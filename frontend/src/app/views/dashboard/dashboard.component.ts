@@ -9,7 +9,7 @@ import {PlaceOrderServiceService} from "../../services/place-order-service.servi
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+ p: number = 1;
   totalCustomers: number = 20;
   totalItems: number;
   totalOrders: number;

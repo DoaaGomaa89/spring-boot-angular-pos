@@ -1,37 +1,49 @@
-version: "3.9"
 services:
   db:
     image: mysql:8.0
+    container_name: spring-boot-angular-pos-db
     environment:
       MYSQL_DATABASE: posdb
       MYSQL_USER: pos
-      MYSQL_PASSWORD: pospass
-      MYSQL_ROOT_PASSWORD: rootpass
-    ports: ["3306:3306"]
+      MYSQL_PASSWORD: pos123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3306:3306"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-ppass"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -ppos123 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - db_data:/var/lib/mysql
 
   backend:
     build:
       context: .
-      dockerfile: Dockerfile.backend
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/posdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: pos
-      SPRING_DATASOURCE_PASSWORD: pospass
-      # Adapt CORS to your frontend URL/port
-      ALLOWED_ORIGINS: http://localhost:8080
+      dockerfile: backend.Dockerfile
+    container_name: spring-boot-angular-pos-backend
     depends_on:
-      - db
-    ports: ["8081:8080"]
+      db:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: "8081"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/posdb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC"
+      SPRING_DATASOURCE_USERNAME: "pos"
+      SPRING_DATASOURCE_PASSWORD: "pos123"
+      # Optional: make Hibernate create tables on first run
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+    ports:
+      - "8081:8081"
 
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile.frontend
-    ports: ["8080:80"]
+      dockerfile: frontend.Dockerfile
+    container_name: spring-boot-angular-pos-frontend
     depends_on:
       - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  db_data:

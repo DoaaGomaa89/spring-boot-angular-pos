@@ -1,4 +1,4 @@
-# Build Spring Boot (WAR) from ./backend
+﻿# Build Spring Boot (WAR) from ./backend
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /src
 COPY backend/pom.xml .
